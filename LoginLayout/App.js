@@ -97,6 +97,13 @@ const styles = StyleSheet.create({
     height: "100%",
     backgroundColor: 'rgba(252, 251, 249, 0.4)',
   },
+  // Cards
+  card: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+    flexDirection: 'row'
+  },
 
   //teste new
   signUpButton: {
@@ -308,24 +315,17 @@ const QRScreen = ({ navigation, route }) => {
 const SignupScreen = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
-      <Text>Testes</Text>
-      <Text style={styles.textStyle}>
-        {/*Here is Platform to get device type*/}
-        {Platform.OS === 'ios' ? 'Device is IOS' : 'Device is Android'}
-      </Text>
-      <SvgQRCode
-        style={{ height: 100, width: 100 }}
-      />
-      <Pressable style={styles.loginButton} backgroundColor="#FCFBF9" onPress={() => Simple()}>
-        <View pointerEvents="none">
-          <TextInput
-            style={styles.TextInput}
-            placeholder="Login"
-            placeholderTextColor="#000000"
-            editable={false}
-          />
+      <View style={styles.card}>
+        <Image source={require('./assets/screen.jpg')} style={{ height: 100, width: 150 }}></Image>
+
+        <View style={{ marginLeft: 30 }}>
+          <Text>TV Smart 3.0</Text>
+          <Text>Ativa</Text>
+          <Text>Conteúdo: Regional SP</Text>
         </View>
-      </Pressable>
+
+      </View>
+
     </View>
   );
 
@@ -380,3 +380,21 @@ function Simple(lel) {
 // })
 //   .then((response) => response.json())
 //   .then((json) => console.log(json));
+
+/* <Text>Testes</Text>
+<Text style={styles.textStyle}>
+  {Platform.OS === 'ios' ? 'Device is IOS' : 'Device is Android'}
+</Text>
+<SvgQRCode
+  style={{ height: 100, width: 100 }}
+/>
+<Pressable style={styles.loginButton} backgroundColor="#FCFBF9" onPress={() => Simple()}>
+  <View pointerEvents="none">
+    <TextInput
+      style={styles.TextInput}
+      placeholder="Login"
+      placeholderTextColor="#000000"
+      editable={false}
+    />
+  </View>
+</Pressable> */
