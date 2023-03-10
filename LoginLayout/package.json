@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
+    "@expo/webpack-config": "^0.17.2",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.4",
     "@react-navigation/native-stack": "^6.9.10",
@@ -35,9 +36,13 @@
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
     "react-native-svg": "13.4.0",
+<<<<<<< Updated upstream
     "react-native-web": "~0.18.9",
     "@expo/webpack-config": "^0.17.2",
     "expo-checkbox": "~2.2.2"
+=======
+    "react-native-web": "^0.18.12"
+>>>>>>> Stashed changes
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
