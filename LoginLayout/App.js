@@ -7,8 +7,9 @@ import {
   Image,
   Button,
   PermissionsAndroid,
+  ScrollView,
+  TextInput
 } from 'react-native'
-import { TextInput } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
@@ -36,6 +37,34 @@ const screens = [
     title: 'Monitor Vendas',
     isChecked: false,
     content: 'Performance',
+    imagePath: require('./assets/screen.png'),
+  },
+  {
+    id: 3,
+    title: 'Computador Pessoal',
+    isChecked: true,
+    content: 'Análise',
+    imagePath: require('./assets/screen.png'),
+  },
+  {
+    id: 4,
+    title: 'Computador Pessoal',
+    isChecked: false,
+    content: 'Análise',
+    imagePath: require('./assets/screen2.png'),
+  },
+  {
+    id: 5,
+    title: 'Teste',
+    isChecked: true,
+    content: 'Análise',
+    imagePath: require('./assets/screen2.png'),
+  },
+  {
+    id: 6,
+    title: 'Teste',
+    isChecked: false,
+    content: 'Análise',
     imagePath: require('./assets/screen.png'),
   },
 ]
@@ -202,7 +231,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     flexDirection: 'column',
-    marginTop: 200,
     width: '100%',
   },
   card: {
@@ -222,52 +250,53 @@ const styles = StyleSheet.create({
 
 // # ----------------- Telas Iniciais -----------------
 
-// const HomeScreen = ({ navigation }) => {
-//   return (
+{// const HomeScreen = ({ navigation }) => {
+  //   return (
 
-//     <View style={styles.container}>
-//       <ImageBackground source={require('./assets/bg.png')} style={styles.backgroundImage} >
+  //     <View style={styles.container}>
+  //       <ImageBackground source={require('./assets/bg.png')} style={styles.backgroundImage} >
 
-//         {/* Aqui entra a logo */}
-//         <View style={styles.container}><Image source={require('./assets/logo.png')} style={{ width: "85%", height: "20%", marginTop: 30 }} /></View>
+  //         {/* Aqui entra a logo */}
+  //         <View style={styles.container}><Image source={require('./assets/logo.png')} style={{ width: "85%", height: "20%", marginTop: 30 }} /></View>
 
-//         {/* Aqui entram os inputs */}
-//         <View style={styles.container}>
+  //         {/* Aqui entram os inputs */}
+  //         <View style={styles.container}>
 
-//           <Pressable style={styles.signUpButton} backgroundColor="#FCFBF9" onPress={() => navigation.navigate('Home3')}>
-//             <View pointerEvents="none">
-//               <TextInput
-//                 style={styles.TextInput}
-//                 placeholder="Cadastrar"
-//                 placeholderTextColor="#000000"
-//                 editable={false}
-//                 onPress={() => navigation.navigate('Login')}
-//               />
-//             </View>
-//           </Pressable>
-//           <Pressable style={styles.loginButton} backgroundColor="#FCFBF9" onPress={() => navigation.navigate('Login')}>
-//             <View pointerEvents="none">
-//               <TextInput
-//                 style={styles.TextInput}
-//                 placeholder="Login"
-//                 placeholderTextColor="#000000"
-//                 editable={false}
-//                 onPress={() => navigation.navigate('Login')}
-//               />
-//             </View>
-//           </Pressable>
+  //           <Pressable style={styles.signUpButton} backgroundColor="#FCFBF9" onPress={() => navigation.navigate('Home3')}>
+  //             <View pointerEvents="none">
+  //               <TextInput
+  //                 style={styles.TextInput}
+  //                 placeholder="Cadastrar"
+  //                 placeholderTextColor="#000000"
+  //                 editable={false}
+  //                 onPress={() => navigation.navigate('Login')}
+  //               />
+  //             </View>
+  //           </Pressable>
+  //           <Pressable style={styles.loginButton} backgroundColor="#FCFBF9" onPress={() => navigation.navigate('Login')}>
+  //             <View pointerEvents="none">
+  //               <TextInput
+  //                 style={styles.TextInput}
+  //                 placeholder="Login"
+  //                 placeholderTextColor="#000000"
+  //                 editable={false}
+  //                 onPress={() => navigation.navigate('Login')}
+  //               />
+  //             </View>
+  //           </Pressable>
 
-//           <Pressable style={{ justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('QRScreen')}>
-//             <Text style={{ margin: 10, margin: 20 }}>............... OU ...............</Text>
-//             <Text style={{ fontSize: 16, marginBottom: 10 }}>Conectar Dispositivo</Text>
-//             <Image source={require('./assets/QR.png')} style={{ height: 40, width: 40 }}></Image>
-//           </Pressable>
+  //           <Pressable style={{ justifyContent: 'center', alignItems: 'center' }} onPress={() => navigation.navigate('QRScreen')}>
+  //             <Text style={{ margin: 10, margin: 20 }}>............... OU ...............</Text>
+  //             <Text style={{ fontSize: 16, marginBottom: 10 }}>Conectar Dispositivo</Text>
+  //             <Image source={require('./assets/QR.png')} style={{ height: 40, width: 40 }}></Image>
+  //           </Pressable>
 
-//         </View>
-//       </ImageBackground >
-//     </View >
-//   );
-// };
+  //         </View>
+  //       </ImageBackground >
+  //     </View >
+  //   );
+  // };
+}
 
 const HomeScreen = ({ navigation }) => {
   return (
@@ -421,50 +450,55 @@ const QRScreen = ({ navigation, route }) => {
 }
 
 const SignupScreen = ({ navigation, route }) => {
-  return <View style={styles.container}></View>
+  return <View style={styles.container}>
+
+  </View>
 }
 
 // # ----------------- Telas TabNav -----------------
 
-const Dispositivos = ({}) => {
+const Dispositivos = ({ }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.cardContainer}>
-        {screens.map((id) => {
-          const [isChecked, setChecked] = useState(false)
-          return (
-            <View style={styles.card}>
-              <Image
-                source={id.imagePath}
-                style={{ height: 112, width: 150 }}
-              ></Image>
-              <View style={{ marginLeft: 20 }}>
-                <Text style={styles.cardTitle}>{id.title}</Text>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Text style={{ marginRight: 10, fontSize: 22 }}>Ativa</Text>
-                  <Checkbox
-                    value={isChecked}
-                    onValueChange={setChecked}
-                    color={isChecked ? Blue : undefined}
-                    style={{ height: 22, width: 22 }}
-                  />
+      <ScrollView>
+        <View style={styles.cardContainer}>
+          {screens.map((id) => {
+            const [isChecked, setChecked] = useState(false)
+            return (
+              <View style={styles.card}>
+                <Image
+                  source={id.imagePath}
+                  style={{ height: 112, width: 150 }}
+                ></Image>
+                <View style={{ marginLeft: 20 }}>
+                  <Text style={styles.cardTitle}>{id.title}</Text>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Text style={{ marginRight: 10, fontSize: 22 }}>Ativa</Text>
+                    <Checkbox
+                      value={isChecked}
+                      onValueChange={setChecked}
+                      color={isChecked ? Blue : undefined}
+                      style={{ height: 22, width: 22 }}
+                    />
+                  </View>
+                  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                    <Text style={{ marginRight: 4, fontSize: 20 }}>
+                      Conteúdo:
+                    </Text>
+                    <Text style={{ fontSize: 18 }}>{id.content}</Text>
+                  </View>
                 </View>
-                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                  <Text style={{ marginRight: 4, fontSize: 20 }}>
-                    Conteúdo:
-                  </Text>
-                  <Text style={{ fontSize: 18 }}>{id.content}</Text>
-                </View>
+
               </View>
-            </View>
-          )
-        })}
-      </View>
-    </View>
+            )
+          })}
+        </View>
+      </ScrollView>
+    </View >
   )
 }
 
-const Conteudo = ({}) => {
+const Conteudo = ({ }) => {
   return (
     <View style={styles.container}>
       <Text>Conteúdo</Text>
@@ -472,7 +506,7 @@ const Conteudo = ({}) => {
   )
 }
 
-const Agenda = ({}) => {
+const Agenda = ({ }) => {
   return (
     <View style={styles.container}>
       <Text>Agenda</Text>
