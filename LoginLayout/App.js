@@ -450,8 +450,28 @@ const QRScreen = ({ navigation, route }) => {
 }
 
 const SignupScreen = ({ navigation, route }) => {
+  const [myText, setMyText] = useState("My Original Text");
   return <View style={styles.container}>
-
+    <Image
+      source={{ uri: 'https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=' + { myText } }}
+      style={{ height: 100, width: 100 }}
+    />
+    <Pressable
+      style={styles.loginButton}
+      backgroundColor="#724A33"
+      onPress={() => setMyText(generateString(4))}
+    >
+      <View pointerEvents="none">
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Login"
+          placeholderTextColor="#000000"
+          editable={false}
+          onPress={() => navigation.navigate('Login')}
+        />
+      </View>
+    </Pressable>
+    <Text>https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={myText}</Text>
   </View>
 }
 
@@ -515,6 +535,21 @@ const Agenda = ({ }) => {
 }
 
 // #-----------------
+
+// program to generate random strings
+
+// declare all characters
+const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+function generateString(length) {
+  let result = ' ';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+
+  return result;
+}
 
 function Simple(lel) {
   fetch('https://943f-187-95-34-164.sa.ngrok.io/get')
