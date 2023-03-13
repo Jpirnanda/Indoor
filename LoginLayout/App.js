@@ -27,7 +27,7 @@ const screens = [
   {
     id: 1,
     title: 'TV Smart 3.0',
-    isChecked: true,
+    isChecked: false,
     content: 'Regional SP',
     imagePath: require('./assets/screen2.png'),
   },
@@ -219,6 +219,7 @@ const styles = StyleSheet.create({
 
   //teste new
 })
+
 // # ----------------- Telas Iniciais -----------------
 
 // const HomeScreen = ({ navigation }) => {
@@ -425,12 +426,12 @@ const SignupScreen = ({ navigation, route }) => {
 
 // # ----------------- Telas TabNav -----------------
 
-const Dispositivos = ({ navigation, route }) => {
-  const [isChecked, setChecked] = useState(false)
+const Dispositivos = ({}) => {
   return (
     <View style={styles.container}>
       <View style={styles.cardContainer}>
         {screens.map((id) => {
+          const [isChecked, setChecked] = useState(false)
           return (
             <View style={styles.card}>
               <Image
@@ -442,9 +443,9 @@ const Dispositivos = ({ navigation, route }) => {
                 <View style={{ flexDirection: 'row', alignItems: 'center' }}>
                   <Text style={{ marginRight: 10, fontSize: 22 }}>Ativa</Text>
                   <Checkbox
-                    value={id.isChecked}
+                    value={isChecked}
                     onValueChange={setChecked}
-                    color={id.isChecked ? Blue : undefined}
+                    color={isChecked ? Blue : undefined}
                     style={{ height: 22, width: 22 }}
                   />
                 </View>
@@ -463,7 +464,7 @@ const Dispositivos = ({ navigation, route }) => {
   )
 }
 
-const Conteudo = ({ navigation, route }) => {
+const Conteudo = ({}) => {
   return (
     <View style={styles.container}>
       <Text>Conteúdo</Text>
@@ -471,7 +472,7 @@ const Conteudo = ({ navigation, route }) => {
   )
 }
 
-const Agenda = ({ navigation, route }) => {
+const Agenda = ({}) => {
   return (
     <View style={styles.container}>
       <Text>Agenda</Text>
@@ -487,18 +488,20 @@ function Simple(lel) {
     .then((json) => console.log(json))
 }
 
-// fetch('http://192.168.0.176:5000/get', {
-//   method: 'POST',
-//   body: JSON.stringify({
-//     email: 'teste',
-//     senha: '0123456789',
-//   }),
-//   headers: {
-//     'Content-type': 'application/json; charset=UTF-8',
-//   },
-// })
-//   .then((response) => response.json())
-//   .then((json) => console.log(json));
+{
+  // fetch('http://192.168.0.176:5000/get', {
+  //   method: 'POST',
+  //   body: JSON.stringify({
+  //     email: 'teste',
+  //     senha: '0123456789',
+  //   }),
+  //   headers: {
+  //     'Content-type': 'application/json; charset=UTF-8',
+  //   },
+  // })
+  //   .then((response) => response.json())
+  //   .then((json) => console.log(json));
+}
 
 /* <Text>Testes</Text>
 <Text style={styles.textStyle}>
