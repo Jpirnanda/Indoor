@@ -18,6 +18,7 @@ import Ionicons from '@expo/vector-icons/Ionicons'
 import { BarCodeScanner } from 'expo-barcode-scanner'
 import SvgQRCode from 'react-native-svg'
 import Checkbox from 'expo-checkbox'
+import { Calendar, CalendarList, Agenda, LocaleConfig } from 'react-native-calendars';
 
 Blue = '#31A9ED'
 
@@ -102,7 +103,7 @@ function TabNav() {
       />
       <Tab.Screen
         name="Agenda"
-        component={Agenda}
+        component={AgendaTab}
         options={{
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="calendar-outline" color={color} size={size} />
@@ -244,6 +245,26 @@ const styles = StyleSheet.create({
     fontSize: 28,
     fontWeight: 'bold',
   },
+
+  // AgendaTab
+  dayCard: {
+    flex: 1,
+    flexDirection: 'row',
+    marginBottom: 15,
+    marginRight: "3%",
+    backgroundColor: 'white',
+    height: 130,
+  },
+  dayCardTitle: {
+    fontSize: 24,
+    color: '#7c7c82',
+    marginRight: '8%',
+  },
+  dayCardSubTitle: {
+    fontSize: 16,
+    color: '#7c7c82',
+    marginRight: '8%'
+  }
 
   //teste new
 })
@@ -526,10 +547,123 @@ const Conteudo = ({ }) => {
   )
 }
 
-const Agenda = ({ }) => {
+const AgendaTab = ({ }) => {
+  const vacation = { key: 'vacation', color: 'red', selectedDotColor: 'blue' };
+  const massage = { key: 'massage', color: 'blue', selectedDotColor: 'blue' };
+  const workout = { key: 'workout', color: 'green' };
   return (
-    <View style={styles.container}>
-      <Text>Agenda</Text>
+    <View style={{ height: "100%", width: '100%' }}>
+      <Calendar
+        style={{ height: '50%', width: "100%" }}
+        markingType="multi-period"
+        markedDates={{
+          '2023-03-14': {
+            periods: [
+              { startingDay: true, endingDay: false, color: '#f0e68c' },
+              { startingDay: true, endingDay: false, color: '#ffa500' },
+              { color: 'transparent' },
+            ]
+          },
+          '2023-03-15': {
+            periods: [
+              { startingDay: false, endingDay: false, color: '#f0e68c' },
+              { startingDay: false, endingDay: true, color: '#ffa500' },
+              { startingDay: true, endingDay: true, color: '#5f9ea0' },
+
+            ]
+          },
+          '2023-03-16': {
+            periods: [
+              { startingDay: false, endingDay: true, color: '#f0e68c' },
+              { startingDay: false, endingDay: true, color: '#00000000' },
+              { startingDay: false, endingDay: true, color: '#00000000' },
+            ]
+          }
+        }}
+      >
+      </Calendar>
+
+      {/* <View style={styles.dayCardContainer}>
+        <View style={styles.dayCard}>
+          <View style={{ alignItems: 'center' }}>
+            <Text>9</Text>
+            <Text>Monday</Text>
+          </View>
+          <View style={{ backgroundColor: 'white' }}>
+            <Text>10:00 - 12:00</Text>
+            <Text>Teste de nome</Text>
+            <Text>Teste de descrição</Text>
+          </View>
+          <Image source={require('./assets/mediaIcon.png')} style={{ height: 60, width: 83 }}></Image>
+        </View>
+      </View> */}
+
+      <ScrollView>
+        {/* Vermelho */}
+        <View style={styles.dayCard}>
+          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>8</Text><Text style={styles.dayCardSubTitle}>Seg</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+        </View>
+
+        {/* <View style={styles.dayCard}>
+          <View style={{ alignItems: 'center', backgroundColor: '#f3f3f3' }}><Text style={styles.dayCardTitle}>9</Text><Text style={styles.dayCardSubTitle}>Seg</Text></View>
+          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+            <View style={{ justifyContent: 'space-evenly', marginTop: '5%' }}><Text>10:00 - 12:00</Text><Text>Corolla 0km</Text><Text>Video 15seg</Text></View>
+            <View style={{ marginTop: '5%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+          </View>
+
+        </View> */}
+
+        <View style={styles.dayCard}>
+          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>9</Text><Text style={styles.dayCardSubTitle}>Seg</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+        </View>
+        <View style={styles.dayCard}>
+          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>10</Text><Text style={styles.dayCardSubTitle}>Ter</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+        </View>
+        <View style={styles.dayCard}>
+          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>11</Text><Text style={styles.dayCardSubTitle}>Qua</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+        </View>
+        <View style={styles.dayCard}>
+          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>12</Text><Text style={styles.dayCardSubTitle}>Qui</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+        </View>
+        <View style={styles.dayCard}>
+          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>13</Text><Text style={styles.dayCardSubTitle}>Sex</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+        </View>
+        <View style={styles.dayCard}>
+          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>14</Text><Text style={styles.dayCardSubTitle}>Sab</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+
+          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+        </View>
+
+      </ScrollView>
+
+
+
     </View>
   )
 }
@@ -645,3 +779,26 @@ function Simple(lel) {
 </View>
 </View> */
 }
+
+LocaleConfig.locales['br'] = {
+  monthNames: [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agosto',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+  ],
+  monthNamesShort: ['Jan.', 'Fev.', 'Mar', 'Abril', 'Mai.', 'Jun.', 'Jul.', 'Ago', 'Set.', 'Out.', 'Nov.', 'Dez.'],
+  dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+  dayNamesShort: ['Dom.', 'Seg.', 'Ter.', 'Quar.', 'Qui.', 'Sex.', 'Sab.'],
+  today: "Hoje"
+};
+LocaleConfig.defaultLocale = 'br';
+
