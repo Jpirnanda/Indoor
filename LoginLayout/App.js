@@ -251,20 +251,25 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     marginBottom: 15,
-    marginRight: "3%",
-    backgroundColor: 'white',
-    height: 130,
   },
-  dayCardTitle: {
-    fontSize: 24,
-    color: '#7c7c82',
-    marginRight: '8%',
+
+  dayDate: {
+    flex: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  dayCardSubTitle: {
-    fontSize: 16,
-    color: '#7c7c82',
-    marginRight: '8%'
-  }
+
+  dayShape: {
+    backgroundColor: '#FFFCCE',
+    flex: 13,
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    borderBottomWidth: 8,
+    borderBottomColor: '#FAF282',
+    borderRadius: 10,
+    marginRight: '3%'
+  },
 
   //teste new
 })
@@ -506,7 +511,7 @@ const Dispositivos = ({ }) => {
           {screens.map((id) => {
             const [isChecked, setChecked] = useState(false)
             return (
-              <View style={styles.card}>
+              <View style={styles.card} key={id.id}>
                 <Image
                   source={id.imagePath}
                   style={{ height: 112, width: 150 }}
@@ -583,82 +588,85 @@ const AgendaTab = ({ }) => {
       >
       </Calendar>
 
-      {/* <View style={styles.dayCardContainer}>
-        <View style={styles.dayCard}>
-          <View style={{ alignItems: 'center' }}>
-            <Text>9</Text>
-            <Text>Monday</Text>
-          </View>
-          <View style={{ backgroundColor: 'white' }}>
-            <Text>10:00 - 12:00</Text>
-            <Text>Teste de nome</Text>
-            <Text>Teste de descrição</Text>
-          </View>
-          <Image source={require('./assets/mediaIcon.png')} style={{ height: 60, width: 83 }}></Image>
-        </View>
-      </View> */}
 
       <ScrollView>
         {/* Vermelho */}
         <View style={styles.dayCard}>
-          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>8</Text><Text style={styles.dayCardSubTitle}>Seg</Text></View>
 
-          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
-
-          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
-        </View>
-
-        {/* <View style={styles.dayCard}>
-          <View style={{ alignItems: 'center', backgroundColor: '#f3f3f3' }}><Text style={styles.dayCardTitle}>9</Text><Text style={styles.dayCardSubTitle}>Seg</Text></View>
-          <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
-            <View style={{ justifyContent: 'space-evenly', marginTop: '5%' }}><Text>10:00 - 12:00</Text><Text>Corolla 0km</Text><Text>Video 15seg</Text></View>
-            <View style={{ marginTop: '5%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+          <View style={styles.dayDate}>
+            <Text style={{ fontSize: 20 }}>8</Text>
+            <Text style={{ fontSize: 16 }}>Seg</Text>
           </View>
 
-        </View> */}
+          <View style={styles.dayShape}>
+            <View><Text>10:00 - 12:00</Text><Text>Corolla 0km</Text></View>
+            <Image source={require('./assets/mediaIcon.png')}></Image>
+
+          </View>
+
+        </View>
 
         <View style={styles.dayCard}>
-          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>9</Text><Text style={styles.dayCardSubTitle}>Seg</Text></View>
 
-          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+          <View style={styles.dayDate}>
+            <Text style={{ fontSize: 20 }}>8</Text>
+            <Text style={{ fontSize: 16 }}>Seg</Text>
+          </View>
 
-          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+          <View style={styles.dayShape}>
+            <View><Text>10:00 - 12:00</Text><Text>Corolla 0km</Text></View>
+            <Image source={require('./assets/mediaIcon.png')}></Image>
+
+          </View>
+
         </View>
+
         <View style={styles.dayCard}>
-          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>10</Text><Text style={styles.dayCardSubTitle}>Ter</Text></View>
 
-          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+          <View style={styles.dayDate}>
+            <Text style={{ fontSize: 20 }}>9</Text>
+            <Text style={{ fontSize: 16 }}>Ter</Text>
+          </View>
 
-          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+          <View style={styles.dayShape}>
+            <View><Text>10:00 - 12:00</Text><Text>Corolla 0km</Text></View>
+            <Image source={require('./assets/mediaIcon.png')}></Image>
+
+          </View>
+
         </View>
+
         <View style={styles.dayCard}>
-          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>11</Text><Text style={styles.dayCardSubTitle}>Qua</Text></View>
 
-          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+          <View style={styles.dayDate}>
+            <Text style={{ fontSize: 20 }}>10</Text>
+            <Text style={{ fontSize: 16 }}>Qua</Text>
+          </View>
 
-          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+          <View style={styles.dayShape}>
+            <View><Text>10:00 - 12:00</Text><Text>Corolla 0km</Text></View>
+            <Image source={require('./assets/mediaIcon.png')}></Image>
+
+          </View>
+
         </View>
+
         <View style={styles.dayCard}>
-          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>12</Text><Text style={styles.dayCardSubTitle}>Qui</Text></View>
 
-          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
+          <View style={styles.dayDate}>
+            <Text style={{ fontSize: 20 }}>11</Text>
+            <Text style={{ fontSize: 16 }}>Qui</Text>
+          </View>
 
-          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+          <View style={styles.dayShape}>
+            <View><Text>10:00 - 12:00</Text><Text>Corolla 0km</Text></View>
+            <Image source={require('./assets/mediaIcon.png')}></Image>
+
+          </View>
+
         </View>
-        <View style={styles.dayCard}>
-          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>13</Text><Text style={styles.dayCardSubTitle}>Sex</Text></View>
 
-          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
 
-          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
-        </View>
-        <View style={styles.dayCard}>
-          <View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>14</Text><Text style={styles.dayCardSubTitle}>Sab</Text></View>
-
-          <View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#A6A09D' }}>Video 15seg</Text></View>
-
-          <View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
-        </View>
 
       </ScrollView>
 
@@ -802,3 +810,12 @@ LocaleConfig.locales['br'] = {
 };
 LocaleConfig.defaultLocale = 'br';
 
+//#3e3a4c, #ffffff, #feafc4, #bdf8fe, #fffdcd
+
+{/* <View style={styles.dayCard}>
+<View style={{ backgroundColor: '#f3f3f3', alignItems: 'center', width: '15%' }}><View style={{ height: '12%', width: '5%', backgroundColor: '#f3f3f3' }}></View><Text style={styles.dayCardTitle}>8</Text><Text style={styles.dayCardSubTitle}>Seg</Text></View>
+
+<View style={{ marginTop: 20, marginLeft: '5%', width: '50%' }}><Text style={{ marginBottom: 10, color: '#303036' }}>10:00 - 12:00</Text><Text style={{ marginBottom: 5, color: '#303036' }}>Corolla 0km</Text><Text style={{ marginBottom: 5, color: '#9daaab' }}>Video 15seg</Text></View>
+
+<View style={{ marginTop: 20, marginLeft: '10%' }}><Image source={require('./assets/mediaIcon.png')} style={{ height: 50, width: 70 }}></Image></View>
+</View> */}

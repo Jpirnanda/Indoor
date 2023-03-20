@@ -22,7 +22,8 @@
       "infoPlist": {
         "NSCameraUsageDescription": "Allow $(PRODUCT_NAME) to access camera.",
         "NSMicrophoneUsageDescription": "Allow $(PRODUCT_NAME) to access your microphone"
-      }
+      },
+      "bundleIdentifier": "com.Jp.AndroidTest"
     },
     "android": {
       "adaptiveIcon": {
@@ -52,6 +53,11 @@
           "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone"
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "6708a030-a130-499c-97a6-18cd9ad3f6ba"
+      }
+    }
   }
 }
